@@ -5,6 +5,7 @@ import com.accenture.javamos.model.FlightOfferSearchResponse;
 import com.amadeus.Amadeus;
 import com.amadeus.Params;
 import com.amadeus.exceptions.ResponseException;
+import com.amadeus.resources.Airline;
 import com.amadeus.resources.FlightOfferSearch;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping("/flights")
@@ -38,16 +37,24 @@ public class FlightOfferSearchController {
                         .and("adults", adults));
 //                        .and("max", 3));
 
+        Airline[] airlines = amadeus.referenceData.airlines.get();
         List<FlightOfferSearchResponse> flightOfferSearchResponse = new ArrayList<FlightOfferSearchResponse>();
 
         for (FlightOfferSearch f : flightOffersSearches) {
             int intineraryLength = f.getItineraries().length - 1;
             int segmentsLength = f.getItineraries()[intineraryLength].getSegments().length - 1;
 
+            List<String> airlinesList = new ArrayList<String>();
+            for(Airline a : airlines)
+                for(String s : f.getValidatingAirlineCodes())
+                    if(a.getIataCode().equals(s))
+                        airlinesList.add(a.getCommonName());
+
             flightOfferSearchResponse.add(new FlightOfferSearchResponse(
                     f.getItineraries()[0].getSegments()[0].getDeparture().getIataCode(),
                     f.getItineraries()[intineraryLength].getSegments()[segmentsLength].getArrival().getIataCode(),
                     (Date) Date.from(Instant.parse(f.getItineraries()[0].getSegments()[0].getDeparture().getAt() + "Z")),
+                    airlinesList,
                     f.isOneWay(),
                     f.getNumberOfBookableSeats(),
                     f.getPrice().getCurrency(),

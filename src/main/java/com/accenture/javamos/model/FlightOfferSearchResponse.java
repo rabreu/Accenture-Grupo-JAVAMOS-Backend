@@ -5,6 +5,7 @@ import lombok.Getter;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @AllArgsConstructor
@@ -12,6 +13,7 @@ public class FlightOfferSearchResponse {
     private final String originLocationCode;
     private final String destinationLocationCode;
     private final Date departureDate;
+    private final List<String> airlineNames;
     private final boolean oneWay;
     private final int numberOfBookableSeats;
     private final String currency;
