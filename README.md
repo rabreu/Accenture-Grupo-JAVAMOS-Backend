@@ -27,9 +27,9 @@ perfil.
 
 Quais ferramentas estamos usando?
 
-- **[NodeJS]**
-- **[Java 11]**
-- **[SpringBoot]**
+- **[NodeJS](https://nodejs.org/en/)**
+- **[Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)**
+- **[SpringBoot](https://spring.io/projects/spring-boot)**
 - **[Amadeus Java SDK](developers.amadeus.com/)**
 
 ## Dia 1 🚀
@@ -38,11 +38,10 @@ Foi o dia em que recebemos o desafio. Nesse dia, nós separamos as estruturas do
 - Entender os objetivos do desafio.
 - Criar um grupo de discussão via áudio na plataforma Discord.
 - Criar um modelo de projeto na plataforma Trello para gerenciarmos nossas atividades.
--
 
 ## Dia 2 🚀🚀
 
-O segundo dia foi marcado pelo desenvolvimento do código de back-end. A escolha do banco de dados foi importante para o armazenamento e segurança de informações do usuário. Dentre várias opções, o PostgresSQL foi adotado graças ao alto desempenho e estabilidade do sistema. Um dos desafios foi pesquisar por API's que pudessem fornecer informações de sites de companhias aéreas de forma simples e eficiente. Após muitas tentativas sem sucesso, uma API em específico nos chamou atenção. O nome dela é Amadeus-Java, e o diferencial é que ela fornece um grande número de sites em coparação com as outras pesquisasdas. Então definimos ela como padrão e aplicamos um filtro para que obtivéssemos os resultados necessários para nossa equipe. Os testes de implementação foram feitos com sucesso, o que nos deixou muito felizes :grin:. 
+O segundo dia foi marcado pelo desenvolvimento do código de back-end. A escolha do banco de dados foi importante para o armazenamento e segurança de informações do usuário. Dentre várias opções, o PostgresSQL foi adotado graças ao alto desempenho e estabilidade do sistema. Um dos desafios foi pesquisar por API's que pudessem fornecer informações de sites de companhias aéreas de forma simples e eficiente. Após muitas tentativas sem sucesso, uma API em específico nos chamou atenção. O nome dela é Amadeus-Java, e o diferencial é que ela fornece um grande número de sites em comparação com as outras pesquisadas. Então definimos ela como padrão e aplicamos um filtro para que obtivéssemos os resultados necessários para nossa equipe. Os testes de implementação foram feitos com sucesso, o que nos deixou muito felizes :grin:. 
 
 ## Dia 3 🚀🚀🚀
 
