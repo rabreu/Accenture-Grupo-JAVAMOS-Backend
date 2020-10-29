@@ -45,6 +45,8 @@ O segundo dia foi marcado pelo desenvolvimento do código de back-end. A escolha
 
 ## Dia 3 🚀🚀🚀
 
+O dia 3 se mostrou um desafio para nossa equipe. Nesse dia, houve mudança no horário da Accademia Accenture e também troca de professor. Foi, também, o dia em que dois integrantes do grupo tiveram que se apresentar ao escritório da Accenture para resolver alguns assuntos específicos da empresa. Todos esses contrapontos tiveram impacto na contribuição, porém o trabalho como um todo ainda permaneceu firme e forte :cowboy_hat_face:. A parte de Front-End foi desenvolvida e a Página de Login e Cadastro ficou sendo aprimorada para melhor visualização da interface para o usuário. Já, em outro aspecto, foi feito o diagrama com Tabelas e relacionamentos do Banco, deixando o código de forma muito organizada e muito útil para guardar os dados de forma mais flexível.
+
 ## Dia 4 🚀🚀🚀🚀
 
 ## License
