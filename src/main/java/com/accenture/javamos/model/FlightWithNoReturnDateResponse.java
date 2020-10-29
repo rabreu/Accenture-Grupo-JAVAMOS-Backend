@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @AllArgsConstructor
-public class FlightOfferSearchResponse {
+public class FlightWithNoReturnDateResponse {
     private final String originLocationCode;
     private final String destinationLocationCode;
     private final Date departureDate;
