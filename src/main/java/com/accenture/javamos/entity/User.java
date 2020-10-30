@@ -1,5 +1,6 @@
 package com.accenture.javamos.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,12 +23,14 @@ public class User {
     @NotNull
     private String email;
 
+    @JsonIgnore
     @Column
     private String password;
 
     @Column
     private Boolean active;
 
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
