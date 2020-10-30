@@ -18,7 +18,7 @@ import java.util.Date;
 @Table(name = "Flights")
 public class Flight {
     @Id
-    private Integer id;
+    private Long id;
 
     @Column
     @NotNull
@@ -51,5 +51,4 @@ public class Flight {
     @Column
     @NotNull
     private double totalPrice;
-
 }

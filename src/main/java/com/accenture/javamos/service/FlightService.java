@@ -18,11 +18,11 @@ public class FlightService {
         return flightRepository.findAll();
     }
 
-    public Optional<Flight> findById(Integer id) {
+    public Optional<Flight> findById(Long id) {
         return flightRepository.findById(id);
     }
 
-    public boolean exists(Integer id) {
+    public boolean exists(Long id) {
         if (flightRepository.findById(id).isPresent())
             return true;
         return false;
