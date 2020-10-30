@@ -30,7 +30,7 @@ Quais ferramentas estamos usando?
 - **[NodeJS](https://nodejs.org/en/)**
 - **[Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)**
 - **[SpringBoot](https://spring.io/projects/spring-boot)**
-- **[Amadeus Java SDK](developers.amadeus.com/)**
+- **[Amadeus Java SDK](https://github.com/amadeus4dev/amadeus-java)**
 
 ## Dia 1 🚀
 
