@@ -21,7 +21,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/flight")
+@RequestMapping("/flight/search")
 public class FlightOfferSearchController {
 
     @Autowired
@@ -33,7 +33,7 @@ public class FlightOfferSearchController {
     @Autowired
     AirlineService airlineService;
 
-    @GetMapping(path = "/search", params = {"from", "to", "departure", "adults"})
+    @GetMapping(path = "", params = {"from", "to", "departure", "adults"})
     public ResponseEntity<Object> flightOfferSearchWithNoReturnDate(@RequestParam("from") String fromIataCode,
                                                                     @RequestParam("to") String toIataCode,
                                                                     @RequestParam("departure") String departureDate,
