@@ -1,38 +1,38 @@
 package com.accenture.javamos.service;
 
-import com.accenture.javamos.configuration.AmadeusConfig;
-import com.amadeus.Amadeus;
-import com.amadeus.Params;
-import com.amadeus.exceptions.ResponseException;
-import com.amadeus.resources.FlightOfferSearch;
+import com.accenture.javamos.entity.Flight;
+import com.accenture.javamos.repository.FlightRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FlightService {
-    Amadeus amadeus = Amadeus
-            .builder(AmadeusConfig.CLIENT_ID, AmadeusConfig.CLIENT_SECRET)
-            .build();
 
-    public FlightOfferSearch[] flightOfferSearchWithNoReturnDate(String fromIataCode, String toIataCode, String departureDate, Integer adults) throws ResponseException {
-        FlightOfferSearch[] flightOffersSearches = amadeus.shopping.flightOffersSearch.get(
-                Params.with("originLocationCode", fromIataCode)
-                        .and("destinationLocationCode", toIataCode)
-                        .and("departureDate", departureDate)
-                        .and("adults", adults));
-//                        .and("max", 3));
-        return flightOffersSearches;
+    @Autowired
+    FlightRepository flightRepository;
+
+    public List<Flight> findAll() {
+        return flightRepository.findAll();
     }
 
-    public FlightOfferSearch[] flightOfferSearchWithReturnDate(String fromIataCode, String toIataCode, String departureDate, String returnDate, Integer adults) throws ResponseException {
-        FlightOfferSearch[] flightOffersSearches = amadeus.shopping.flightOffersSearch.get(
-                Params.with("originLocationCode", fromIataCode)
-                        .and("destinationLocationCode", toIataCode)
-                        .and("departureDate", departureDate)
-                        .and("returnDate", returnDate)
-                        .and("adults", adults));
-//                        .and("max", 3));
+    public Optional<Flight> findById(Integer id) {
+        return flightRepository.findById(id);
+    }
 
-        System.out.println(flightOffersSearches[0]);
-        return flightOffersSearches;
+    public boolean exists(Integer id) {
+        if (flightRepository.findById(id).isPresent())
+            return true;
+        return false;
+    }
+
+    public Flight add(Flight flight) {
+        return flightRepository.save(flight);
+    }
+
+    public Iterable<Flight> addAll(Iterable<Flight> flights) {
+        return flightRepository.saveAll(flights);
     }
 }
