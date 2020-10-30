@@ -53,21 +53,22 @@ public class FlightOfferSearchController {
                         if (a.getIataCode().equals(s))
                             airlinesList.add(a.getCommonName());
 
-                if(!flightService.exists(f.hashCode())) {
-                    Flight flight = new Flight(
-                            f.hashCode(),
-                            f.getItineraries()[0].getSegments()[0].getDeparture().getIataCode(),
-                            f.getItineraries()[intineraryLength].getSegments()[segmentsLength].getArrival().getIataCode(),
-                            (Date) Date.from(Instant.parse(f.getItineraries()[0].getSegments()[0].getDeparture().getAt() + "Z")),
-                            (Date) Date.from(Instant.parse(f.getItineraries()[intineraryLength].getSegments()[segmentsLength].getDeparture().getAt() + "Z")),
-                            airlinesList.get(0),
-                            f.getNumberOfBookableSeats(),
-                            f.getPrice().getCurrency(),
-                            f.getPrice().getGrandTotal()
-                    );
+                Flight flight = new Flight(
+                        f.hashCode(),
+                        f.getItineraries()[0].getSegments()[0].getDeparture().getIataCode(),
+                        f.getItineraries()[intineraryLength].getSegments()[segmentsLength].getArrival().getIataCode(),
+                        (Date) Date.from(Instant.parse(f.getItineraries()[0].getSegments()[0].getDeparture().getAt() + "Z")),
+                        (Date) Date.from(Instant.parse(f.getItineraries()[intineraryLength].getSegments()[segmentsLength].getDeparture().getAt() + "Z")),
+                        airlinesList.get(0),
+                        f.getNumberOfBookableSeats(),
+                        f.getPrice().getCurrency(),
+                        f.getPrice().getGrandTotal()
+                );
+
+                if(!flightService.exists(f.hashCode()))
                     flightService.add(flight);
-                    flightsResponse.add(flight);
-                }
+
+                flightsResponse.add(flight);
             }
             return new ResponseEntity<>(flightsResponse, HttpStatus.OK);
         } catch (ResponseException e) {
