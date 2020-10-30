@@ -1,6 +1,7 @@
 package com.accenture.javamos.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,15 +10,14 @@ import javax.persistence.*;
 @Table(name = "User_likes_flight")
 @Getter
 public class UserLikesFlight {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @EmbeddedId
+    @Embedded
+    private UserLikesFlightId id;
 
-    @Setter
-    @ManyToOne
-    private Flight flight;
+    public UserLikesFlight(UserLikesFlightId id) {
+        this.id = id;
+    }
 
-    @Setter
-    @ManyToOne
-    private User user;
+    public UserLikesFlight() {
+    }
 }

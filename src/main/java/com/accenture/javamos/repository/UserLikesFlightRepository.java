@@ -1,6 +1,7 @@
 package com.accenture.javamos.repository;
 
 import com.accenture.javamos.entity.UserLikesFlight;
+import com.accenture.javamos.entity.UserLikesFlightId;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UserLikesFlightRepository extends JpaRepository<UserLikesFlight, Integer> {
+public interface UserLikesFlightRepository extends JpaRepository<UserLikesFlight, UserLikesFlightId> {
     List<UserLikesFlight> findAll();
 
     @Query(value = "SELECT * FROM USER_LIKES_FLIGHT " +

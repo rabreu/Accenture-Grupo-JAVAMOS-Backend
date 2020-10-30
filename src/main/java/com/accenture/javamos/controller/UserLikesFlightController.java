@@ -3,6 +3,7 @@ package com.accenture.javamos.controller;
 import com.accenture.javamos.entity.Flight;
 import com.accenture.javamos.entity.User;
 import com.accenture.javamos.entity.UserLikesFlight;
+import com.accenture.javamos.entity.UserLikesFlightId;
 import com.accenture.javamos.service.FlightService;
 import com.accenture.javamos.service.SecurityService;
 import com.accenture.javamos.service.UserLikesFlightService;
@@ -28,7 +29,7 @@ public class UserLikesFlightController {
 
     @PostMapping(value = "", params = {"id"})
     @ResponseBody
-    public ResponseEntity<Object> UserLikesFlightController(@RequestParam("id") Integer flightId) {
+    public ResponseEntity<Object> UserLikesFlightController(@RequestParam("id") Long flightId) {
         try {
             User user = securityService.getUserAuthenticated();
             Optional<Flight> flight = flightService.findById(flightId);
@@ -36,8 +37,10 @@ public class UserLikesFlightController {
             if (!flight.isPresent())
                 return new ResponseEntity<>("{\"status_code\": " + HttpStatus.INTERNAL_SERVER_ERROR.value() + ",\"message\": \"" + HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase() + "\"}", HttpStatus.INTERNAL_SERVER_ERROR);
 
-            UserLikesFlight userLikesFlight = userLikesFlightService.add(flight.get(), user);
-            return new ResponseEntity<>(userLikesFlight, HttpStatus.CREATED);
+            UserLikesFlightId userLikesFlightId = new UserLikesFlightId(user, flight.get());
+
+            UserLikesFlight response = userLikesFlightService.add(new UserLikesFlight(userLikesFlightId));
+            return new ResponseEntity<>(response, HttpStatus.CREATED);
         } catch (Exception e) {
             e.printStackTrace();
         }
