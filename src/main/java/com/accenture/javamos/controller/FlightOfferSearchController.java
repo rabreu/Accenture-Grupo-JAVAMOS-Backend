@@ -21,7 +21,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/flight")
+@RequestMapping("/flight/search")
 public class FlightOfferSearchController {
 
     @Autowired
@@ -33,7 +33,7 @@ public class FlightOfferSearchController {
     @Autowired
     AirlineService airlineService;
 
-    @GetMapping(path = "/search", params = {"from", "to", "departure", "adults"})
+    @GetMapping(path = "", params = {"from", "to", "departure", "adults"})
     public ResponseEntity<Object> flightOfferSearchWithNoReturnDate(@RequestParam("from") String fromIataCode,
                                                                     @RequestParam("to") String toIataCode,
                                                                     @RequestParam("departure") String departureDate,
@@ -53,19 +53,20 @@ public class FlightOfferSearchController {
                         if (a.getIataCode().equals(s))
                             airlinesList.add(a.getCommonName());
 
+                Long generatedId = Instant.parse(f.getItineraries()[intineraryLength].getSegments()[segmentsLength].getDeparture().getAt() + "Z").getEpochSecond() + Instant.parse(f.getItineraries()[intineraryLength].getSegments()[segmentsLength].getArrival().getAt() + "Z").getEpochSecond();
                 Flight flight = new Flight(
-                        f.hashCode(),
+                        generatedId,
                         f.getItineraries()[0].getSegments()[0].getDeparture().getIataCode(),
                         f.getItineraries()[intineraryLength].getSegments()[segmentsLength].getArrival().getIataCode(),
                         (Date) Date.from(Instant.parse(f.getItineraries()[0].getSegments()[0].getDeparture().getAt() + "Z")),
-                        (Date) Date.from(Instant.parse(f.getItineraries()[intineraryLength].getSegments()[segmentsLength].getDeparture().getAt() + "Z")),
+                        (Date) Date.from(Instant.parse(f.getItineraries()[intineraryLength].getSegments()[segmentsLength].getArrival().getAt() + "Z")),
                         airlinesList.get(0),
                         f.getNumberOfBookableSeats(),
                         f.getPrice().getCurrency(),
                         f.getPrice().getGrandTotal()
                 );
 
-                if(!flightService.exists(f.hashCode()))
+                if(!flightService.exists(flight.getId()))
                     flightService.add(flight);
 
                 flightsResponse.add(flight);
