@@ -22,7 +22,7 @@ perfil.
 	🚧  Java Select 🚀 Em construção...  🚧
 </h4>
 
-- [Getting started](#itens-json)
+- **[Getting started](#itens-json)**
 - **[Documentation](https://unform.dev/guides/basic-form)**
 
 Quais ferramentas estamos usando?
