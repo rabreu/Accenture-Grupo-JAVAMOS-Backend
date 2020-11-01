@@ -22,12 +22,11 @@ perfil.
 	🚧  Java Select 🚀 Em construção...  🚧
 </h4>
 
-- **[Getting started](https://unform.dev/)**
+- [Getting started](#itens-json)
 - **[Documentation](https://unform.dev/guides/basic-form)**
 
 Quais ferramentas estamos usando?
 
-- **[NodeJS](https://nodejs.org/en/)**
 - **[Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)**
 - **[SpringBoot](https://spring.io/projects/spring-boot)**
 - **[Amadeus Java SDK](https://github.com/amadeus4dev/amadeus-java)**
@@ -50,6 +49,31 @@ O dia 3 se mostrou um desafio para nossa equipe. Nesse dia, houve mudança no ho
 ## Dia 4 🚀🚀🚀🚀
 
 No dia 4, tivemos o conhecimento que a aplicação de front-end seria feito por uma equipe da Accenture e as equipes seriam encarregadas por desenvolver a API. Assim, deixamos nossa parte de front-end de lado, e começamos a ter foco total no back-end. A partir daí, precisamos realocar a distribuição de tarefas e, para isso, fizemos uma reunião via Discord e atribuímos as atividades de cada membro na plataforma Trello. O desafio desta vez foi entender o funcionamento de API's e foi preciso estudar a documentação de algumas delas, como a Flight Offer Price API. Um dos objetivos era fornecer um serviço de endpoint para resgatar os preços atualizados das passagens cada vez que ouvesse um requerimento para isso. Essa parte é muito importante para garantir a confiabilidade dos valores ao realizar uma compra. A compra, por sua vez, seria realizada por uma plataforma especializada para isso, e nossa equipe adotou a ferramenta 'pagar.me' para fazer essa integração. A nossa API estava numa fase em que já era posível buscar passagens aéreas e realizar o retorno delas em formato JSON. Em todo esse dia, também foi preciso ler e estudar a documentação do Azure DevOps para que possamos atuar de forma coordenada e colaborativa para gerar produtos melhores e mais confiáveis. Por fim, deixamos algumas tarefas a fazer, como a função de favoritar uma passagem, a compra dela e realizar testes automatizados.
+
+## 📆 Feriadão 📆 
+
+O feriadão de finados continuou sendo marcado por pesquisas com testes e mais testes para melhorar a API da melhor forma possível. (Continua..)
+
+## 🏆 Itens JSON 🏆
+
+Códigos do local de origem e destino, data de saída, data de chegada, nome da linha aérea, número de vagas reserváveis, moeda e preço total.
+Eles são indendificáveis por seus id's.
+
+Por exemplo:
+
+```javascript
+{
+      "id":3208846800,
+      "originLocationCode":"BSB",
+      "destinationLocationCode":"CGH",
+      "departureDate":"2020-11-03T14:25:00.000+0000",
+      "arrivalDate":"2020-11-03T17:50:00.000+0000",
+      "airlineName":"AZUL LINHAS",
+      "numberOfBookableSeats":9,
+      "currency":"EUR",
+      "totalPrice":109.78
+   }
+ ```
 
 ## License
 
