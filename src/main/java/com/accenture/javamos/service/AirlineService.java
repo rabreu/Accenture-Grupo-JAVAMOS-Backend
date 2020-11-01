@@ -1,19 +1,18 @@
 package com.accenture.javamos.service;
 
-import com.accenture.javamos.configuration.AmadeusConfig;
-import com.amadeus.Amadeus;
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.Airline;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AirlineService {
 
-    Amadeus amadeus = Amadeus
-            .builder(AmadeusConfig.CLIENT_ID, AmadeusConfig.CLIENT_SECRET)
-            .build();
+    @Autowired
+    AmadeusService amadeusService;
 
     public Airline[] getAllAirline() throws ResponseException {
-        return amadeus.referenceData.airlines.get();
+        return amadeusService.amadeus.referenceData.airlines.get();
     }
 }
