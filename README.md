@@ -22,7 +22,7 @@ perfil.
 	🚧  Java Select 🚀 Em construção...  🚧
 </h4>
 
-- [Getting started](#:trophy:-itens-json-:trophy:)
+- [Getting started](#itens-json)
 - **[Documentation](https://unform.dev/guides/basic-form)**
 
 Quais ferramentas estamos usando?
@@ -54,7 +54,7 @@ No dia 4, tivemos o conhecimento que a aplicação de front-end seria feito por 
 
 O feriadão de finados continuou sendo marcado por pesquisas com testes e mais testes para melhorar a API da melhor forma possível. (Continua..)
 
-## 🏆 Itens JSON 🏆
+## Itens JSON
 
 Códigos do local de origem e destino, data de saída, data de chegada, nome da linha aérea, número de vagas reserváveis, moeda e preço total.
 Eles são indendificáveis por seus id's.
