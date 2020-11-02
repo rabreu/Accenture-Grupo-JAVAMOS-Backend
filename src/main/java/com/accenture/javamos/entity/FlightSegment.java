@@ -1,14 +1,17 @@
 package com.accenture.javamos.entity;
 
 import java.util.Date;
-import java.util.List;
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,8 +22,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "flight")
-public class Flight {
+@Table(name = "flight_segment")
+public class FlightSegment {
   @Id
   private String number;
 
@@ -42,28 +45,18 @@ public class Flight {
 
   @Column
   @NotNull
-  private String duration;
-
-  @Column
-  @NotNull
   private String airlineName;
 
   @Column
   @NotNull
-  private Integer numberOfBookableSeats;
-
-  @Column
-  @NotNull
-  private String currency;
-
-  @Column
-  @NotNull
-  private double totalPrice;
+  private String duration;
 
   @Column
   @NotNull
   private Integer numberOfStops;
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "flight")
-  private List<FlightSegment> segments;
+  @JsonIgnore
+  @ManyToOne
+  @JoinColumn(name = "flight_number")
+  private Flight flight;
 }

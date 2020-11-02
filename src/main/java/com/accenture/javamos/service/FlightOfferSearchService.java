@@ -1,37 +1,61 @@
 package com.accenture.javamos.service;
 
-import com.accenture.javamos.configuration.AmadeusConfig;
-import com.amadeus.Amadeus;
-import com.amadeus.Params;
+import com.accenture.javamos.converter.FlightOfferSearchConverter;
+import com.accenture.javamos.entity.Flight;
+import com.accenture.javamos.repository.FlightRepository;
 import com.amadeus.exceptions.ResponseException;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class FlightOfferSearchService {
-    Amadeus amadeus = Amadeus
-            .builder(AmadeusConfig.CLIENT_ID, AmadeusConfig.CLIENT_SECRET)
-            .build();
+  @Autowired
+  private AmadeusService amadeusService;
 
-    public com.amadeus.resources.FlightOfferSearch[] flightOfferSearchWithNoReturnDate(String fromIataCode, String toIataCode, String departureDate, Integer adults) throws ResponseException {
-        com.amadeus.resources.FlightOfferSearch[] flightOffersSearches = amadeus.shopping.flightOffersSearch.get(
-                Params.with("originLocationCode", fromIataCode)
-                        .and("destinationLocationCode", toIataCode)
-                        .and("departureDate", departureDate)
-                        .and("adults", adults));
-//                        .and("max", 3));
-        return flightOffersSearches;
-    }
+  @Autowired
+  FlightOfferSearchConverter flightOfferSearchConverter;
 
-    public com.amadeus.resources.FlightOfferSearch[] flightOfferSearchWithReturnDate(String fromIataCode, String toIataCode, String departureDate, String returnDate, Integer adults) throws ResponseException {
-        com.amadeus.resources.FlightOfferSearch[] flightOffersSearches = amadeus.shopping.flightOffersSearch.get(
-                Params.with("originLocationCode", fromIataCode)
-                        .and("destinationLocationCode", toIataCode)
-                        .and("departureDate", departureDate)
-                        .and("returnDate", returnDate)
-                        .and("adults", adults));
-//                        .and("max", 3));
+  @Autowired
+  FlightRepository flightRepository;
 
-        System.out.println(flightOffersSearches[0]);
-        return flightOffersSearches;
-    }
+  public List<Flight> flightOfferSearchWithNoReturnDate(
+    String fromIataCode,
+    String toIataCode,
+    String departureDate,
+    Integer adults
+  )
+    throws ResponseException {
+    com.amadeus.resources.FlightOfferSearch[] flightOffersSearches = amadeusService.getFlightOfferSearches(
+      fromIataCode,
+      toIataCode,
+      departureDate,
+      adults
+    );
+
+    List<Flight> flights =
+      this.flightOfferSearchConverter.convert(flightOffersSearches);
+
+    flights.forEach(flightRepository::save);
+
+    return flights;
+  }
+
+  public List<Flight> flightOfferSearchWithReturnDate(
+    String fromIataCode,
+    String toIataCode,
+    String departureDate,
+    String returnDate,
+    Integer adults
+  ) {
+    com.amadeus.resources.FlightOfferSearch[] flightOffersSearches = amadeusService.getFlightOfferSearchesWithReturnDate(
+      fromIataCode,
+      toIataCode,
+      departureDate,
+      returnDate,
+      adults
+    );
+
+    return this.flightOfferSearchConverter.convert(flightOffersSearches);
+  }
 }

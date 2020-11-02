@@ -17,54 +17,61 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 /*@EnableGlobalMethodSecurity(securedEnabled = true)*/
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+  public static final String[] ALLOWED_URLS = { "/user/**" };
 
-    public static final String[] ALLOWED_URLS = {
-            "/user/**"
-    };
+  public static final String[] ADMIN_URLS = { "/admin/**" };
 
-    public static final String[] ADMIN_URLS = {
-            "/admin/**"
-    };
+  @Autowired
+  private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
-    @Autowired
-    private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+  @Autowired
+  private JwtUserDetailsService jwtUserDetailsService;
 
-    @Autowired
-    private JwtUserDetailsService jwtUserDetailsService;
+  @Autowired
+  private JwtRequestFilter jwtRequestFilter;
 
-    @Autowired
-    private JwtRequestFilter jwtRequestFilter;
+  @Autowired
+  public void configureGlobal(AuthenticationManagerBuilder auth)
+    throws Exception {
+    auth
+      .userDetailsService(jwtUserDetailsService)
+      .passwordEncoder(passwordEncoder());
+  }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
-    }
+  @Override
+  protected void configure(HttpSecurity httpSecurity) throws Exception {
+    httpSecurity
+      .csrf()
+      .disable()
+      // Não cheque essas requisições
+      .authorizeRequests()
+      .antMatchers(ALLOWED_URLS)
+      .permitAll()
+      // Qualquer outra requisição deve ser checada
+      .antMatchers(ADMIN_URLS)
+      .hasAuthority("ADMIN")
+      .anyRequest()
+      .authenticated()
+      .and()
+      .exceptionHandling()
+      .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+      .and()
+      .sessionManagement()
+      .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    httpSecurity.addFilterBefore(
+      jwtRequestFilter,
+      UsernamePasswordAuthenticationFilter.class
+    );
+  }
 
-    @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.csrf().disable()
-                // Não cheque essas requisições
-                .authorizeRequests()
-                .antMatchers(ALLOWED_URLS)
-                .permitAll()
-                // Qualquer outra requisição deve ser checada
-                .antMatchers(ADMIN_URLS).hasAuthority("ADMIN")
-                .anyRequest().authenticated().and()
-                .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-    }
+  @Bean
+  public BCryptPasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
 
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
-
+  @Bean
+  @Override
+  public AuthenticationManager authenticationManagerBean() throws Exception {
+    return super.authenticationManagerBean();
+  }
 }
