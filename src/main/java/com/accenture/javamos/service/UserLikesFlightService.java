@@ -7,11 +7,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserLikesFlightService {
+  @Autowired
+  UserLikesFlightRepository userLikesFlightRepository;
 
-    @Autowired
-    UserLikesFlightRepository userLikesFlightRepository;
-
-    public UserLikesFlight add(UserLikesFlight userlikesFlight) {
-        return userLikesFlightRepository.save(userlikesFlight);
-    }
+  public UserLikesFlight add(UserLikesFlight userlikesFlight) {
+    return userLikesFlightRepository.save(userlikesFlight);
+  }
 }
