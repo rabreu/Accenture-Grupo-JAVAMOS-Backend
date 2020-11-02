@@ -53,7 +53,7 @@ INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('CU', 'Cubana de Aviación', 'h
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('VV', 'Viva Air', 'https://images.kiwi.com/airlines/64/VV.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('PQ', 'SkyUp Airlines', 'https://images.kiwi.com/airlines/64/PQ.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('W3', 'Arik Air', 'https://images.kiwi.com/airlines/64/W3.png');
-INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('PE', 'Peoples Viennaline PE', 'https://images.kiwi.com/airlines/64/PE.png');
+INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('PE', 'People''s Viennaline PE', 'https://images.kiwi.com/airlines/64/PE.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('YD', 'Gomelavia', 'https://images.kiwi.com/airlines/64/YD.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('GJ', 'Loong Air', 'https://images.kiwi.com/airlines/64/GJ.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('FLIXBUS', 'Flixbus', 'https://images.kiwi.com/airlines/64/FLIXBUS.png');
@@ -275,7 +275,7 @@ INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('P7', 'Small Planet Airline', '
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('8I', 'MyAir', 'https://images.kiwi.com/airlines/64/8I.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('XK', 'Air Corsica', 'https://images.kiwi.com/airlines/64/XK.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('FW', 'Ibex Airlines', 'https://images.kiwi.com/airlines/64/FW.png');
-INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('I7', 'IntAir Iles', 'https://images.kiwi.com/airlines/64/I7.png');
+INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('I7', 'Int''Air Iles', 'https://images.kiwi.com/airlines/64/I7.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('LO', 'LOT Polish Airlines', 'https://images.kiwi.com/airlines/64/LO.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('B2', 'Belavia Belarusian Airlines', 'https://images.kiwi.com/airlines/64/B2.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('2T', 'TruJet', 'https://images.kiwi.com/airlines/64/2T.png');
@@ -288,7 +288,7 @@ INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('JN', 'JOON', 'https://images.k
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('EH', 'ANA Wings', 'https://images.kiwi.com/airlines/64/EH.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('XT', 'Indonesia AirAsia X', 'https://images.kiwi.com/airlines/64/XT.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('TA', 'Avianca El Salvador', 'https://images.kiwi.com/airlines/64/TA.png');
-INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('UD', 'HexAir', 'https://images.kiwi.com/airlines/64/UD.png');
+INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('UD', 'Hex''Air', 'https://images.kiwi.com/airlines/64/UD.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('RZ', 'Sansa Air', 'https://images.kiwi.com/airlines/64/RZ.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('4G', 'Gazpromavia', 'https://images.kiwi.com/airlines/64/4G.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('G0', 'Ghana International Airlines', 'https://images.kiwi.com/airlines/64/G0.png');
@@ -442,7 +442,7 @@ INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('D3', 'Daallo Airlines', 'https
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('IA', 'Iraqi Airways', 'https://images.kiwi.com/airlines/64/IA.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('XO', 'LTE International Airways', 'https://images.kiwi.com/airlines/64/XO.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('CE', 'Chalair', 'https://images.kiwi.com/airlines/64/CE.png');
-INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('7L', 'Sun DOr', 'https://images.kiwi.com/airlines/64/7L.png');
+INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('7L', 'Sun D''Or', 'https://images.kiwi.com/airlines/64/7L.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('JK', 'Spanair', 'https://images.kiwi.com/airlines/64/JK.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('S3', 'SBA Airlines', 'https://images.kiwi.com/airlines/64/S3.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('UH', 'AtlasGlobal Ukraine', 'https://images.kiwi.com/airlines/64/UH.png');
@@ -483,7 +483,7 @@ INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('FM', 'Shanghai Airlines', 'htt
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('WJ', 'JetSMART Argentina', 'https://images.kiwi.com/airlines/64/WJ.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('AU', 'Austral Lineas Aereas', 'https://images.kiwi.com/airlines/64/AU.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('H6', 'Bulgarian Air Charter', 'https://images.kiwi.com/airlines/64/H6.png');
-INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('HF', 'Air Cote dIvoire', 'https://images.kiwi.com/airlines/64/HF.png');
+INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('HF', 'Air Cote d''Ivoire', 'https://images.kiwi.com/airlines/64/HF.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('ZA', 'Sky Angkor Airlines', 'https://images.kiwi.com/airlines/64/ZA.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('JF', 'Jetairfly', 'https://images.kiwi.com/airlines/64/JF.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('WA', 'KLM Cityhopper', 'https://images.kiwi.com/airlines/64/WA.png');
@@ -546,7 +546,7 @@ INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('MA', 'Malév', 'https://images
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('N5', 'Skagway Air Service', 'https://images.kiwi.com/airlines/64/N5.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('VP', 'VASP', 'https://images.kiwi.com/airlines/64/VP.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('4H', 'United Airways', 'https://images.kiwi.com/airlines/64/4H.png');
-INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('SO', 'Salsa d\\Haiti', 'https://images.kiwi.com/airlines/64/SO.png');
+INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('SO', 'Salsa d''Haiti', 'https://images.kiwi.com/airlines/64/SO.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('ZC', 'Korongo Airlines', 'https://images.kiwi.com/airlines/64/ZC.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('WH', 'China Northwest Airlines (WH)', 'https://images.kiwi.com/airlines/64/WH.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('5Q', 'BQB Lineas Aereas', 'https://images.kiwi.com/airlines/64/5Q.png');
@@ -846,7 +846,7 @@ INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('NQ', 'Air Japan', 'https://ima
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('EP', 'Iran Aseman Airlines', 'https://images.kiwi.com/airlines/64/EP.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('IE', 'Solomon Airlines', 'https://images.kiwi.com/airlines/64/IE.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('SH', 'Sharp Airlines', 'https://images.kiwi.com/airlines/64/SH.png');
-INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('PARKSOFHAM', 'Parks of Hamilton', 'https://images.kiwi.com/airlines/64/PARKSOFHAM.png');
+INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('PARKSOFHAM', 'Park''s of Hamilton', 'https://images.kiwi.com/airlines/64/PARKSOFHAM.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('V5', 'Aerovías DAP', 'https://images.kiwi.com/airlines/64/V5.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('4A', 'Air Kiribati', 'https://images.kiwi.com/airlines/64/4A.png');
 INSERT INTO AIRLINE (ID, NAME, LOGO_URL) VALUES ('T5', 'Turkmenistan Airlines', 'https://images.kiwi.com/airlines/64/T5.png');
