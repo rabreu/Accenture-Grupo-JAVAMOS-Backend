@@ -21,9 +21,9 @@ public class UserLikesFlightId implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User userId;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "flight_id")
-    private Flight flightId;
+    private Flight flight;
 }
