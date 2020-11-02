@@ -1,25 +1,29 @@
 package com.accenture.javamos.entity;
 
-import java.io.Serializable;
-import javax.persistence.Embeddable;
-import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.io.Serializable;
 
 @Embeddable
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserLikesFlightId implements Serializable {
-  /**
-   *
-   */
-  private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-  @ManyToOne
-  private User userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User userId;
 
-  @ManyToOne
-  private Flight flightId;
+    @ManyToOne
+    @JoinColumn(name = "flight_id")
+    private Flight flightId;
 }
