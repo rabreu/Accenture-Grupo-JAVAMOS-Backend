@@ -5,9 +5,9 @@ import com.accenture.javamos.entity.FlightSegment;
 import com.amadeus.resources.FlightOfferSearch;
 import com.amadeus.resources.FlightOfferSearch.Itinerary;
 import com.amadeus.resources.FlightOfferSearch.SearchSegment;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -15,14 +15,14 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class FlightOfferSearchConverter
-  implements Converter<FlightOfferSearch[], Set<Flight>> {
+  implements Converter<FlightOfferSearch[], List<Flight>> {
   private final Converter<String[], String> iataCodeConverter;
   private final Converter<SearchSegment, FlightSegment> flightSegmentConverter;
   private final Converter<String, Date> flightDateConverter;
 
   @Override
-  public Set<Flight> convert(FlightOfferSearch[] flightOfferSearchs) {
-    Set<Flight> flights = new HashSet<>();
+  public List<Flight> convert(FlightOfferSearch[] flightOfferSearchs) {
+    List<Flight> flights = new ArrayList<>();
 
     for (FlightOfferSearch f : flightOfferSearchs) {
       // we are converting a FlightOfferSearch to a Flight
@@ -40,7 +40,7 @@ public class FlightOfferSearchConverter
         this.iataCodeConverter.convert(f.getValidatingAirlineCodes());
 
       // get segments and count total stops
-      Set<FlightSegment> segments = new HashSet<>();
+      List<FlightSegment> segments = new ArrayList<>();
       int numberOfStops = 0;
 
       for (SearchSegment s : fSegments) {
@@ -50,8 +50,12 @@ public class FlightOfferSearchConverter
         numberOfStops += segment.getNumberOfStops();
       }
 
-      // get flight number (e.g., AD7755)
-      String number = firstSegment.getCarrierCode() + firstSegment.getNumber();
+      // get id (e.g., 23) + flight number (e.g., AD7755). Result = 23-AD7755
+      String number =
+        f.getId() +
+        "-" +
+        firstSegment.getCarrierCode() +
+        firstSegment.getNumber();
 
       // from/to code
       String originLocationCode = firstSegment.getDeparture().getIataCode();

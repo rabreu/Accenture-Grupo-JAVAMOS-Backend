@@ -1,12 +1,12 @@
 package com.accenture.javamos.controller;
 
-import com.accenture.javamos.converter.FlightOfferSearchConverter;
+import com.accenture.javamos.entity.Flight;
 import com.accenture.javamos.model.ErrorResponse;
 import com.accenture.javamos.model.FlightOfferSearchResponse;
 import com.accenture.javamos.service.FlightOfferSearchService;
 import com.accenture.javamos.service.FlightService;
 import com.amadeus.exceptions.ResponseException;
-import com.amadeus.resources.FlightOfferSearch;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +22,6 @@ public class FlightOfferSearchController {
   FlightOfferSearchService flightOfferSearchService;
 
   @Autowired
-  FlightOfferSearchConverter flightOfferSearchConverter;
-
-  @Autowired
   FlightService flightService;
 
   @GetMapping(path = "", params = { "from", "to", "departure", "adults" })
@@ -36,19 +33,15 @@ public class FlightOfferSearchController {
   )
     throws ResponseException {
     try {
-      // get flight offers (Amadeus API)
-      FlightOfferSearch[] flightOfferSearches = flightOfferSearchService.flightOfferSearchWithNoReturnDate(
+      List<Flight> flights = flightOfferSearchService.flightOfferSearchWithNoReturnDate(
         fromIataCode,
         toIataCode,
         departureDate,
         adults
       );
 
-      // TODO: save flights to database
-
       FlightOfferSearchResponse response = new FlightOfferSearchResponse(
-        // convert FlightOfferSearch[] to List<Flight>
-        this.flightOfferSearchConverter.convert(flightOfferSearches)
+        flights
       );
 
       return new ResponseEntity<FlightOfferSearchResponse>(

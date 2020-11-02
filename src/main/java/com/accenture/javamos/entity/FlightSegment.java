@@ -57,6 +57,6 @@ public class FlightSegment {
 
   @JsonIgnore
   @ManyToOne
-  @JoinColumn(name = "number", insertable = false, updatable = false)
+  @JoinColumn(name = "flight_number")
   private Flight flight;
 }

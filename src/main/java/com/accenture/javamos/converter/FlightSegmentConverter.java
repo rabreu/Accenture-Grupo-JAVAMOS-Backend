@@ -15,7 +15,8 @@ public class FlightSegmentConverter
 
   @Override
   public FlightSegment convert(SearchSegment segment) {
-    String number = segment.getCarrierCode() + segment.getNumber();
+    String number =
+      segment.getId() + "-" + segment.getCarrierCode() + segment.getNumber();
     String from = segment.getDeparture().getIataCode();
     String to = segment.getArrival().getIataCode();
     String departureDateString = segment.getDeparture().getAt();

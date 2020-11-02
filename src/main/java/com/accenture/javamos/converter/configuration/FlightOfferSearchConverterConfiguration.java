@@ -6,7 +6,7 @@ import com.accenture.javamos.converter.FlightSegmentConverter;
 import com.accenture.javamos.converter.IataCodeConverter;
 import com.accenture.javamos.entity.Flight;
 import com.amadeus.resources.FlightOfferSearch;
-import java.util.Set;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +24,7 @@ public class FlightOfferSearchConverterConfiguration {
   FlightDateConverter dateConverter;
 
   @Bean
-  public Converter<FlightOfferSearch[], Set<Flight>> configFlightOfferSearchConverter() {
+  public Converter<FlightOfferSearch[], List<Flight>> configFlightOfferSearchConverter() {
     return new FlightOfferSearchConverter(
       this.iataCodeConverter,
       this.flightSegmentConverter,

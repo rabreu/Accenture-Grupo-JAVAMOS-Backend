@@ -1,7 +1,8 @@
 package com.accenture.javamos.entity;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -63,6 +64,6 @@ public class Flight {
   @NotNull
   private Integer numberOfStops;
 
-  @OneToMany(mappedBy = "flight")
-  private Set<FlightSegment> segments;
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "flight")
+  private List<FlightSegment> segments;
 }

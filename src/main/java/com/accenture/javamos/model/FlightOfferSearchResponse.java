@@ -1,7 +1,7 @@
 package com.accenture.javamos.model;
 
 import com.accenture.javamos.entity.Flight;
-import java.util.Set;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,5 +12,5 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FlightOfferSearchResponse {
-  Set<Flight> flights;
+  List<Flight> flights;
 }

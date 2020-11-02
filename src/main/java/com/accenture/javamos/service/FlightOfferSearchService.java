@@ -1,6 +1,10 @@
 package com.accenture.javamos.service;
 
+import com.accenture.javamos.converter.FlightOfferSearchConverter;
+import com.accenture.javamos.entity.Flight;
+import com.accenture.javamos.repository.FlightRepository;
 import com.amadeus.exceptions.ResponseException;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +13,13 @@ public class FlightOfferSearchService {
   @Autowired
   private AmadeusService amadeusService;
 
-  public com.amadeus.resources.FlightOfferSearch[] flightOfferSearchWithNoReturnDate(
+  @Autowired
+  FlightOfferSearchConverter flightOfferSearchConverter;
+
+  @Autowired
+  FlightRepository flightRepository;
+
+  public List<Flight> flightOfferSearchWithNoReturnDate(
     String fromIataCode,
     String toIataCode,
     String departureDate,
@@ -23,10 +33,15 @@ public class FlightOfferSearchService {
       adults
     );
 
-    return flightOffersSearches;
+    List<Flight> flights =
+      this.flightOfferSearchConverter.convert(flightOffersSearches);
+
+    flights.forEach(flightRepository::save);
+
+    return flights;
   }
 
-  public com.amadeus.resources.FlightOfferSearch[] flightOfferSearchWithReturnDate(
+  public List<Flight> flightOfferSearchWithReturnDate(
     String fromIataCode,
     String toIataCode,
     String departureDate,
@@ -41,6 +56,6 @@ public class FlightOfferSearchService {
       adults
     );
 
-    return flightOffersSearches;
+    return this.flightOfferSearchConverter.convert(flightOffersSearches);
   }
 }
