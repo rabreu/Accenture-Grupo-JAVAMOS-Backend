@@ -27,7 +27,7 @@ perfil.
 
 Quais ferramentas estamos usando?
 
-- **[Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)**
+- **[Java 8](docs.oracle.com/javase/8/)**
 - **[SpringBoot](https://spring.io/projects/spring-boot)**
 - **[Amadeus Java SDK](https://github.com/amadeus4dev/amadeus-java)**
 
@@ -77,4 +77,4 @@ Por exemplo:
 
 ## License
 
-MIT © [Rocketseat](https://github.com/Rocketseat)
+MIT © 
