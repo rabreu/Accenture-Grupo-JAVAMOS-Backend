@@ -30,6 +30,7 @@ Quais ferramentas estamos usando?
 - **[Java 8](docs.oracle.com/javase/8/)**
 - **[SpringBoot](https://spring.io/projects/spring-boot)**
 - **[Amadeus Java SDK](https://github.com/amadeus4dev/amadeus-java)**
+- **[Lombok](https://projectlombok.org/)**
 
 ## Dia 1 🚀
 
@@ -77,4 +78,4 @@ Por exemplo:
 
 ## License
 
-[MIT ©](license) 
+[MIT ©](https://github.com/rabreu/Accenture-Grupo-JAVAMOS-Backend/blob/main/LICENSE) 
