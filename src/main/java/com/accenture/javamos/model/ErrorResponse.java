@@ -5,8 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class UserResponse {
-  private final boolean success;
+public class ErrorResponse {
+  private final int statusValue;
   private final String message;
-  private final String userEmail;
 }
