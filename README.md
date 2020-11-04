@@ -31,6 +31,7 @@ Quais ferramentas estamos usando?
 - **[SpringBoot](https://spring.io/projects/spring-boot)**
 - **[Amadeus Java SDK](https://github.com/amadeus4dev/amadeus-java)**
 - **[Lombok](https://projectlombok.org/)**
+- **[REST-assured](https://rest-assured.io/)**
 
 ## Dia 1 🚀
 
