@@ -1,5 +1,6 @@
 package com.accenture.javamos.converter;
 
+import com.accenture.javamos.entity.Airline;
 import com.accenture.javamos.entity.Flight;
 import com.accenture.javamos.entity.FlightSegment;
 import com.amadeus.resources.FlightOfferSearch;
@@ -21,7 +22,7 @@ import org.springframework.stereotype.Component;
 public class FlightOfferSearchConverter
   implements Converter<FlightOfferSearch[], List<Flight>> {
 
-  private final Converter<String[], String> iataCodeConverter;
+  private final Converter<String, Airline> iataCodeConverter;
   private final Converter<SearchSegment, FlightSegment> flightSegmentConverter;
   private final Converter<String, Date> flightDateConverter;
 
@@ -47,8 +48,8 @@ public class FlightOfferSearchConverter
       SearchSegment lastSegment = fSegments[segmentsLength];
 
       // get airline name
-      String airlineName =
-        this.iataCodeConverter.convert(f.getValidatingAirlineCodes());
+      Airline airline =
+        this.iataCodeConverter.convert(firstSegment.getCarrierCode());
 
       // get segments and count total stops
       List<FlightSegment> segments = new ArrayList<>();
@@ -100,7 +101,7 @@ public class FlightOfferSearchConverter
       flight.setDepartureDate(departureDate);
       flight.setArrivalDate(arrivalDate);
       flight.setDuration(duration);
-      flight.setAirlineName(airlineName);
+      flight.setAirline(airline);
       flight.setNumberOfBookableSeats(numberOfBookableSeats);
       flight.setCurrency(currency);
       flight.setTotalPrice(totalPrice);

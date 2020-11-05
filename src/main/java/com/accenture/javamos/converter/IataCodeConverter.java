@@ -1,27 +1,25 @@
 package com.accenture.javamos.converter;
 
-import com.accenture.javamos.service.AmadeusService;
+import com.accenture.javamos.entity.Airline;
+import com.accenture.javamos.service.AirlineService;
 import java.util.Arrays;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class IataCodeConverter implements Converter<String[], String> {
+public class IataCodeConverter implements Converter<String, Airline> {
+
   @Autowired
-  private AmadeusService amadeusService;
+  private AirlineService airlineService;
 
   @Override
-  public String convert(String[] iataCodes) {
-    List<String> arrIataCodes = Arrays.asList(iataCodes);
-
-    return Arrays
-      .asList(amadeusService.getAirlines())
+  public Airline convert(String iataCode) {
+    return airlineService
+      .getAirlines()
       .stream()
-      .filter(a -> arrIataCodes.contains(a.getIataCode()))
+      .filter(a -> a.getId().equals(iataCode))
       .findFirst()
-      .get()
-      .getCommonName();
+      .get();
   }
 }
