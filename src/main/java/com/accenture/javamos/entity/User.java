@@ -3,6 +3,9 @@ package com.accenture.javamos.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Set;
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,14 +20,21 @@ public class User {
   private Integer id;
 
   @Column
+  @NotNull
+  @Min(value = 3)
+  @Max(value = 255)
   private String realName;
 
   @Column(unique = true)
   @NotNull
+  @Email
   private String email;
 
   @JsonIgnore
   @Column
+  @NotNull
+  @Min(value = 6)
+  @Max(value = 25)
   private String password;
 
   @Column
