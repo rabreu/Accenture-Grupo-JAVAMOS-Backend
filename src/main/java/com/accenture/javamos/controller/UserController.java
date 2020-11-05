@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
   @Autowired
   private UserService userService;
 
@@ -46,8 +47,7 @@ public class UserController {
 
   @PostMapping("/signup")
   @ResponseBody
-  public ResponseEntity<UserResponse> add(@RequestBody User user)
-    throws JSONException {
+  public ResponseEntity<UserResponse> add(@RequestBody User user) {
     try {
       Optional<User> userExists = userService.findUserByEmail(user.getEmail());
       if (userExists.isPresent()) {

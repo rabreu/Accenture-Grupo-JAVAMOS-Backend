@@ -1,5 +1,6 @@
 package com.accenture.javamos.converter;
 
+import com.accenture.javamos.entity.Airline;
 import com.accenture.javamos.entity.FlightSegment;
 import com.amadeus.resources.FlightOfferSearch.SearchSegment;
 import java.util.Date;
@@ -11,19 +12,20 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class FlightSegmentConverter
   implements Converter<SearchSegment, FlightSegment> {
+
   private final Converter<String, Date> flightDateConverter;
+  private final Converter<String, Airline> iataCodeConverter;
 
   @Override
   public FlightSegment convert(SearchSegment segment) {
-    String number =
-      segment.getId() + "-" + segment.getCarrierCode() + segment.getNumber();
+    String number = segment.getCarrierCode() + segment.getNumber();
     String from = segment.getDeparture().getIataCode();
     String to = segment.getArrival().getIataCode();
     String departureDateString = segment.getDeparture().getAt();
     Date departureDate = this.flightDateConverter.convert(departureDateString);
     String arrivalDateString = segment.getArrival().getAt();
     Date arrivalDate = this.flightDateConverter.convert(arrivalDateString);
-    String airlineName = segment.getCarrierCode();
+    Airline airline = iataCodeConverter.convert(segment.getCarrierCode());
     String duration = segment.getDuration();
     Integer numberOfStops = segment.getNumberOfStops();
 
@@ -33,7 +35,7 @@ public class FlightSegmentConverter
     fSegment.setDestinationLocationCode(to);
     fSegment.setDepartureDate(departureDate);
     fSegment.setArrivalDate(arrivalDate);
-    fSegment.setAirlineName(airlineName);
+    fSegment.setAirline(airline);
     fSegment.setDuration(duration);
     fSegment.setNumberOfStops(numberOfStops);
 
