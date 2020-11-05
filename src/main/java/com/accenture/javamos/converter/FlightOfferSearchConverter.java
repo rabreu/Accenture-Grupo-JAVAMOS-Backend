@@ -5,6 +5,8 @@ import com.accenture.javamos.entity.FlightSegment;
 import com.amadeus.resources.FlightOfferSearch;
 import com.amadeus.resources.FlightOfferSearch.Itinerary;
 import com.amadeus.resources.FlightOfferSearch.SearchSegment;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,11 +29,15 @@ public class FlightOfferSearchConverter
   public List<Flight> convert(FlightOfferSearch[] flightOfferSearchs) {
     List<Flight> flights = new ArrayList<>();
 
+    JsonArray flightOfferSearchesJSON =
+      flightOfferSearchs[0].getResponse().getData().getAsJsonArray();
+    int idx = 0;
+
     for (FlightOfferSearch f : flightOfferSearchs) {
       // we are converting a FlightOfferSearch to a Flight
       Flight flight = new Flight();
-      // JsonElement offer = flightOfferSearchesJSON.get(idx++);
-      // flight.setOfferJSON(offer.toString());
+      JsonElement offer = flightOfferSearchesJSON.get(idx++);
+      flight.setOffer(offer.toString());
 
       // prepare some reusable variables
       Itinerary[] fItineraries = f.getItineraries();

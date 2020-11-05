@@ -1,5 +1,6 @@
 package com.accenture.javamos.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -69,6 +70,8 @@ public class Flight {
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "flight")
   private List<FlightSegment> segments;
 
-  @OneToOne(cascade = CascadeType.ALL, mappedBy = "flight")
-  private FlightOffer offer;
+  @Column(columnDefinition = "TEXT")
+  @NotNull
+  @JsonIgnore
+  private String offer;
 }
