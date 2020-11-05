@@ -27,11 +27,12 @@ perfil.
 
 Quais ferramentas estamos usando?
 
-- **[Java 8](docs.oracle.com/javase/8/)**
+- **[Java 8](https://docs.oracle.com/javase/8/)**
 - **[SpringBoot](https://spring.io/projects/spring-boot)**
 - **[Amadeus Java SDK](https://github.com/amadeus4dev/amadeus-java)**
 - **[Lombok](https://projectlombok.org/)**
 - **[REST-assured](https://rest-assured.io/)**
+- **[Postman](https://www.postman.com/)**
 
 ## Dia 1 🚀
 
@@ -54,9 +55,17 @@ No dia 4, tivemos o conhecimento que a aplicação de front-end seria feito por 
 
 ## 📆 Feriadão 📆 
 
-O feriadão de finados continuou sendo marcado por pesquisas com testes e mais testes para melhorar a API da melhor forma possível. (Continua..)
+O feriadão de finados continuou sendo marcado por pesquisas com testes e mais testes para melhorar a API da melhor forma possível. Encontramos alguns BUGs no código e ao investigar, percebemos que foi causado pela inclusão do Lombok, que é uma biblioteca focada em produtividade com redução de código por meio de anotações. O problema foi corrigido manualmente ao identificar as linhas defeituosas. Ao revisar o projeto, encontramos outras inconscistências, como a possibilidade de se criar um usuário sem nome, sem senha e sem email. Isso foi rapidamente anotado para ser ajustado. Enfim, estávamos num estágio de refinamento e aplicar um código limpo, conforme é recomendado pelas boas práticas de Arquitetura de Software 👌.
 
-## Itens JSON
+## 4° dia restante para entrega 💻🏃
+
+A partir desse dia, começaram os treinamentos da Accenture, o que ocupou grande parte do tempo, sendo aulas ministradas no horário da manhã e tarde, e à noite a continuação da Accademia Accenture de Java. Assim, no pouco horário disponível, corrigimos os erros que econtramos anteriormente e continuamos a aplicar os testes pertinentes. 
+
+## 3° dia restante para entrega 💻🏃🏃
+
+Como o dia anterior, o dia todo foi marcado por treinamentos da Accenture, mostrando os primeiros passos com a empresa ✍️. Mesmo assim, continuamos a fazer nosso melhor e dividimos o tempo para conseguir fazer nossos deveres em paralelo, sem comprometer tanto nossas atividades e entregar os resultados no prazo. Na aula anterior da Accademia Accenture, o professor apresentou uma nova forma de consumir serviços, que até então, não tínhamos o conhecimento. Era o conceito de se utilizar API's externas diferente das que estávamos usando. O projeto [Feign](https://domineospring.wordpress.com/2017/06/02/feign-uma-forma-simples-para-consumir-servicos/) é um exemplo de mecanismo que automatiza a tarefa de consumir diversos serviços. Pra nossa equipe, isso foi muito bom, pois facilitou muito a integração com a plataforma [Pagar.me](https://pagar.me/). 
+
+## Itens JSON [needs to be changed..]
 
 Códigos do local de origem e destino, data de saída, data de chegada, nome da linha aérea, número de vagas reserváveis, moeda e preço total.
 Eles são indendificáveis por seus id's.
