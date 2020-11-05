@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -21,8 +22,9 @@ import lombok.Setter;
 @Entity
 @Table(name = "flight")
 public class Flight {
+
   @Id
-  private String number;
+  private String id;
 
   @Column
   @NotNull
@@ -66,4 +68,7 @@ public class Flight {
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "flight")
   private List<FlightSegment> segments;
+
+  @OneToOne(cascade = CascadeType.ALL, mappedBy = "flight")
+  private FlightOffer offer;
 }

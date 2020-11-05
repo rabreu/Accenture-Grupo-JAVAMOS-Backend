@@ -5,6 +5,8 @@ import com.accenture.javamos.entity.FlightSegment;
 import com.amadeus.resources.FlightOfferSearch;
 import com.amadeus.resources.FlightOfferSearch.Itinerary;
 import com.amadeus.resources.FlightOfferSearch.SearchSegment;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class FlightOfferSearchConverter
   implements Converter<FlightOfferSearch[], List<Flight>> {
+
   private final Converter<String[], String> iataCodeConverter;
   private final Converter<SearchSegment, FlightSegment> flightSegmentConverter;
   private final Converter<String, Date> flightDateConverter;
@@ -27,6 +30,8 @@ public class FlightOfferSearchConverter
     for (FlightOfferSearch f : flightOfferSearchs) {
       // we are converting a FlightOfferSearch to a Flight
       Flight flight = new Flight();
+      // JsonElement offer = flightOfferSearchesJSON.get(idx++);
+      // flight.setOfferJSON(offer.toString());
 
       // prepare some reusable variables
       Itinerary[] fItineraries = f.getItineraries();
@@ -50,13 +55,6 @@ public class FlightOfferSearchConverter
         numberOfStops += segment.getNumberOfStops();
       }
 
-      // get id (e.g., 23) + flight number (e.g., AD7755). Result = 23-AD7755
-      String number =
-        f.getId() +
-        "-" +
-        firstSegment.getCarrierCode() +
-        firstSegment.getNumber();
-
       // from/to code
       String originLocationCode = firstSegment.getDeparture().getIataCode();
       String destinationLocationCode = lastSegment.getArrival().getIataCode();
@@ -71,12 +69,26 @@ public class FlightOfferSearchConverter
       int mins = (int) ((millis / (1000 * 60)) % 60);
       String duration = hours + "h" + mins + "min";
 
+      DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+
+      // id + origin + dest + departure date + arrival date (e.g., 0004-BSB-CGN-20201111-20201111)
+      String id =
+        String.format("%04d", Integer.parseInt(f.getId())) +
+        "-" +
+        firstSegment.getDeparture().getIataCode() +
+        "-" +
+        lastSegment.getArrival().getIataCode() +
+        "-" +
+        dateFormat.format(departureDate) +
+        "-" +
+        dateFormat.format(arrivalDate);
+
       // rest of info
       int numberOfBookableSeats = f.getNumberOfBookableSeats();
       String currency = f.getPrice().getCurrency();
       double totalPrice = f.getPrice().getGrandTotal();
 
-      flight.setNumber(number);
+      flight.setId(id);
       flight.setOriginLocationCode(originLocationCode);
       flight.setDestinationLocationCode(destinationLocationCode);
       flight.setDepartureDate(departureDate);
