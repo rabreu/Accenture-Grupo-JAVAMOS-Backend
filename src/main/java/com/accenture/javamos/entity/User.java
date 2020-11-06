@@ -7,6 +7,9 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,8 +24,7 @@ public class User {
 
   @Column
   @NotNull
-  @Min(value = 3)
-  @Max(value = 255)
+  @Length(min = 3, max = 25) 
   private String realName;
 
   @Column(unique = true)
@@ -30,11 +32,9 @@ public class User {
   @Email
   private String email;
 
-  @JsonIgnore
+  //@JsonIgnore
   @Column
   @NotNull
-  @Min(value = 6)
-  @Max(value = 25)
   private String password;
 
   @Column
