@@ -9,20 +9,21 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "Users")
 @Getter
 @Setter
 public class User {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
   @Column
   @NotNull
-  @Min(value = 3)
-  @Max(value = 255)
+  @Length(min = 3, max = 100)
   private String realName;
 
   @Column(unique = true)
@@ -33,8 +34,6 @@ public class User {
   @JsonIgnore
   @Column
   @NotNull
-  @Min(value = 6)
-  @Max(value = 25)
   private String password;
 
   @Column
