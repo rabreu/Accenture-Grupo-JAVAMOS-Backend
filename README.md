@@ -30,7 +30,7 @@ Integrantes:
 </h4>
 
 - **[Getting started](#itens-json)**
-- **[Documentation](#itens-json)**
+- **[Documentation](https://documenter.getpostman.com/view/10647633/TVYGcy7r)**
 
 Quais ferramentas estamos usando?
 
@@ -86,7 +86,12 @@ Faltando 1 dia para a entrega desse projeto, a API JAVAMOS já estava nos retoqu
 
 ## Itens JSON
 
-Ao iniciar a aplicação, será realizada a criação de tabelas de domínio e a inclusão de perfis de acesso. Os itens são gerados em formato Json e são indendificáveis por seus id's.
+1) Para utilizar a API é necessário cadastrar um usuário válido. 
+2) Após o cadastro do usuário, é necessário autenticar o email e senha cadastrados. 
+3) Assim, a autenticação gera um token de acesso. 
+4) Para utilizar a API é necessário colocar esse token no Header Authorization do request. "Authorization": "Bearer <TOKEN_AQUI>"
+
+Os vôos são gerados em formato Json e são indendificáveis por seus id's.
 
 Por exemplo:
 
@@ -136,6 +141,53 @@ Por exemplo:
                   "logo_url":"https://images.kiwi.com/airlines/64/AV.png"
                },
                "duration":"PT5H30M",
+               "numberOfStops":0
+            }
+         ]
+      },
+      {
+         "id":"0003-GRU-JFK-20201130-20201201",
+         "originLocationCode":"GRU",
+         "destinationLocationCode":"JFK",
+         "departureDate":"2020-12-01T01:25:00.000+0000",
+         "arrivalDate":"2020-12-01T19:05:00.000+0000",
+         "duration":"17h40min",
+         "airline":{
+            "id":"AV",
+            "name":"Avianca",
+            "logo_url":"https://images.kiwi.com/airlines/64/AV.png"
+         },
+         "numberOfBookableSeats":9,
+         "currency":"EUR",
+         "totalPrice":601.47,
+         "numberOfStops":0,
+         "segments":[
+            {
+               "number":"AV184",
+               "originLocationCode":"GRU",
+               "destinationLocationCode":"BOG",
+               "departureDate":"2020-12-01T01:25:00.000+0000",
+               "arrivalDate":"2020-12-01T05:40:00.000+0000",
+               "airline":{
+                  "id":"AV",
+                  "name":"Avianca",
+                  "logo_url":"https://images.kiwi.com/airlines/64/AV.png"
+               },
+               "duration":"PT6H15M",
+               "numberOfStops":0
+            },
+            {
+               "number":"AV244",
+               "originLocationCode":"BOG",
+               "destinationLocationCode":"JFK",
+               "departureDate":"2020-12-01T13:15:00.000+0000",
+               "arrivalDate":"2020-12-01T19:05:00.000+0000",
+               "airline":{
+                  "id":"AV",
+                  "name":"Avianca",
+                  "logo_url":"https://images.kiwi.com/airlines/64/AV.png"
+               },
+               "duration":"PT5H50M",
                "numberOfStops":0
             }
          ]
