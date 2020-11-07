@@ -60,7 +60,19 @@ public class UserController {
           HttpStatus.BAD_REQUEST
         );
       }
-
+     
+     if(user.getEmail() == "") {
+    	 return new ResponseEntity<>(
+    			 new UserResponse(false, "Email not Found", "ERROR"),
+    			 HttpStatus.UNAUTHORIZED);
+     }
+      
+     if(user.getPassword() == "") {
+    	 return new ResponseEntity<>(
+    			 new UserResponse(false, "Password not Found", "ERROR"),
+    			 HttpStatus.UNAUTHORIZED);
+     }
+      
       userService.add(user);
       return new ResponseEntity<>(
         new UserResponse(true, "User created.", user.getEmail()),
