@@ -14,12 +14,13 @@ public class TestUserAPI {
 	@Test
 	public void createUserTest() {
 		given()
-			.contentType("application/json")
-			.body("{ \n"
-					+ "	\"realName\":\"jon\",\n"
-					+ "	\"password\":\"123456\",\n"
-					+ "	\"email\":\"john.doe@anon\"\n"
-					+ "}")
+		.contentType("application/json")
+		.body("{ \n"
+				+ "		\"firstName\":\"John\",\n"
+				+ "		\"lastName\": \"Doe\",\n"
+				+ "		\"password\":\"1234\",\n"
+				+ "		\"email\":\"john.doe@anonymous.org\"\n"
+				+ "	}")
 		.when()
 			.post(url)
 		.then()
@@ -32,10 +33,28 @@ public class TestUserAPI {
 		given()
 			.contentType("application/json")
 			.body("{ \n"
-					+ "	\"realName\":\"\",\n"
-					+ "	\"password\":\"123456\",\n"
-					+ "	\"email\":\"john.doe@anon\"\n"
-					+ "}")
+					+ "		\"firstName\":\"\",\n"
+					+ "		\"lastName\": \"Doe\",\n"
+					+ "		\"password\":\"1234\",\n"
+					+ "		\"email\":\"john.doe@anonymous.org\"\n"
+					+ "	}")
+		.when()
+			.post(url)
+		.then()
+			.statusCode(400)
+			.log().all();
+	}
+	
+	@Test
+	public void createUserWihOutLastNameTest() {
+		given()
+			.contentType("application/json")
+			.body("{ \n"
+					+ "		\"firstName\":\"John\",\n"
+					+ "		\"lastName\": \"\",\n"
+					+ "		\"password\":\"1234\",\n"
+					+ "		\"email\":\"john.doe@anonymous.org\"\n"
+					+ "	}")
 		.when()
 			.post(url)
 		.then()
@@ -48,10 +67,11 @@ public class TestUserAPI {
 		given()
 			.contentType("application/json")
 			.body("{ \n"
-					+ "	\"realName\":\"Jon\",\n"
-					+ "	\"password\":\"\",\n"
-					+ "	\"email\":\"john.doe@anon\"\n"
-					+ "}")
+					+ "		\"firstName\":\"John\",\n"
+					+ "		\"lastName\": \"Doe\",\n"
+					+ "		\"password\":\"\",\n"
+					+ "		\"email\":\"john.doe@anonymous.org\"\n"
+					+ "	}")
 		.when()
 			.post(url)
 		.then()
@@ -64,15 +84,17 @@ public class TestUserAPI {
 		given()
 			.contentType("application/json")
 			.body("{ \n"
-					+ "	\"realName\":\"jon\",\n"
-					+ "	\"password\":\"123456\",\n"
-					+ "	\"email\":\"\"\n"
-					+ "}")
+					+ "		\"firstName\":\"John\",\n"
+					+ "		\"lastName\": \"Doe\",\n"
+					+ "		\"password\":\"1234\",\n"
+					+ "		\"email\":\"\"\n"
+					+ "	}")
 		.when()
 			.post(url)
 		.then()
 			.statusCode(401)
 			.log().all();
 	}
+	
 	
 }
