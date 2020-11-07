@@ -1,6 +1,7 @@
 package com.accenture.javamos.service;
 
 import com.accenture.javamos.entity.User;
+import com.accenture.javamos.controller.exception.EmailAlreadyTakenException;
 import com.accenture.javamos.repository.UserRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
+
   @Autowired
   private UserRepository userRepository;
 
@@ -17,6 +19,18 @@ public class UserService {
 
   public Optional<User> findUserByEmail(String email) {
     return userRepository.findUserByEmail(email);
+  }
+
+  public User createNewUser(User user) throws EmailAlreadyTakenException {
+    Optional<User> userExists = this.findUserByEmail(user.getEmail());
+
+    if (userExists.isPresent()) {
+      throw new EmailAlreadyTakenException(
+        "E-mail already taken: " + user.getEmail()
+      );
+    }
+
+    return this.add(user);
   }
 
   public User add(User user) {
