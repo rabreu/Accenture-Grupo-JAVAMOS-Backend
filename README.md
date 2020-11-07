@@ -84,7 +84,7 @@ Faltando 1 dia para a entrega desse projeto, a API JAVAMOS já estava nos retoqu
 
 (...)
 
-## Itens JSON
+## Getting started
 
 1) Para utilizar a API é necessário cadastrar um usuário válido. 
 2) Após o cadastro do usuário, é necessário autenticar o email e senha cadastrados. 
