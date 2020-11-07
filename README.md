@@ -18,6 +18,13 @@ Avanade, que avaliarão o código desenvolvido. Nossas competências
 técnicas e comportamentais serão alocadas nos projetos que tenha mais fit com o nosso respectivo
 perfil.
 
+Integrantes:
+
+- [Igor Santos](https://github.com/i-santos)
+- [João Victor](https://github.com/Victor-Fernandes)
+- [Renata Abreu](https://github.com/rabreu)
+- [Ronaldo Dantas](https://github.com/rondan100)
+
 <h4 align="center"> 
 	🚧  Java Select 🚀 Em construção...  🚧
 </h4>
@@ -73,28 +80,68 @@ O grupo JAVAMOS continuou a se reunir na plataforma Discord para avaliarmos o pr
 
 Faltando 1 dia para a entrega desse projeto, a API JAVAMOS já estava nos retoques finais. A integração com o Pagar.me estava sendo desenvolvida e estávamos avaliando soluções com a plataforma da Microsoft Azure no serviço de DevOps. 
 
+## Dia de Entrega 🙌🙏
+
+(...)
+
 ## Itens JSON
 
-Ao iniciar a aplicação pela classe [~~Colocar Classe]()~~, será realizada a criação de tabelas de domínio e a inclusão de perfis de acesso A~~DMIN~~ e ~~USER~~.
-Também é possível validar a autenticação do usuário ~~MASTER~~ através da documentação: ~~{HOST}:{PORTA}/swagger-ui.html~~~.
-
-~~Códigos do local de origem e destino, data de saída, data de chegada, nome da linha aérea, número de vagas reserváveis, moeda e preço total.
-Eles são indendificáveis por seus id's.
+Ao iniciar a aplicação, será realizada a criação de tabelas de domínio e a inclusão de perfis de acesso. Os itens são gerados em formato Json e são indendificáveis por seus id's.
 
 Por exemplo:
 
 ```javascript
 {
-      "id":3208846800,
-      "originLocationCode":"BSB",
-      "destinationLocationCode":"CGH",
-      "departureDate":"2020-11-03T14:25:00.000+0000",
-      "arrivalDate":"2020-11-03T17:50:00.000+0000",
-      "airlineName":"AZUL LINHAS",
-      "numberOfBookableSeats":9,
-      "currency":"EUR",
-      "totalPrice":109.78
-   }
+   "flights":[
+      {
+         "id":"0001-GRU-JFK-20201130-20201201",
+         "originLocationCode":"GRU",
+         "destinationLocationCode":"JFK",
+         "departureDate":"2020-12-01T01:25:00.000+0000",
+         "arrivalDate":"2020-12-01T12:40:00.000+0000",
+         "duration":"11h15min",
+         "airline":{
+            "id":"AV",
+            "name":"Avianca",
+            "logo_url":"https://images.kiwi.com/airlines/64/AV.png"
+         },
+         "numberOfBookableSeats":9,
+         "currency":"EUR",
+         "totalPrice":601.47,
+         "numberOfStops":0,
+         "segments":[
+            {
+               "number":"AV184",
+               "originLocationCode":"GRU",
+               "destinationLocationCode":"BOG",
+               "departureDate":"2020-12-01T01:25:00.000+0000",
+               "arrivalDate":"2020-12-01T05:40:00.000+0000",
+               "airline":{
+                  "id":"AV",
+                  "name":"Avianca",
+                  "logo_url":"https://images.kiwi.com/airlines/64/AV.png"
+               },
+               "duration":"PT6H15M",
+               "numberOfStops":0
+            },
+            {
+               "number":"AV210",
+               "originLocationCode":"BOG",
+               "destinationLocationCode":"JFK",
+               "departureDate":"2020-12-01T07:10:00.000+0000",
+               "arrivalDate":"2020-12-01T12:40:00.000+0000",
+               "airline":{
+                  "id":"AV",
+                  "name":"Avianca",
+                  "logo_url":"https://images.kiwi.com/airlines/64/AV.png"
+               },
+               "duration":"PT5H30M",
+               "numberOfStops":0
+            }
+         ]
+      }
+    ]
+  }
  ```
 
 ## License
