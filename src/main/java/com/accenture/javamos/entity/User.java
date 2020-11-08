@@ -1,16 +1,23 @@
 package com.accenture.javamos.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
 import java.util.Set;
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.Length;
-
+import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "Users")
@@ -24,7 +31,7 @@ public class User {
 
   @Column
   @NotNull
-  @Length(min = 3, max = 100)
+  @Size(min = 3, max = 100)
   private String realName;
 
   @Column(unique = true)
@@ -32,7 +39,6 @@ public class User {
   @Email
   private String email;
 
-  //@JsonIgnore
   @Column
   @NotNull
   private String password;
@@ -40,7 +46,6 @@ public class User {
   @Column
   private Boolean active;
 
-  @JsonIgnore
   @ManyToMany(cascade = CascadeType.MERGE)
   @JoinTable(
     name = "user_role",
@@ -48,4 +53,7 @@ public class User {
     inverseJoinColumns = @JoinColumn(name = "role_id")
   )
   private Set<Role> roles;
+
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+  private List<Ticket> tickets;
 }

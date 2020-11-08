@@ -20,10 +20,10 @@ public class UserLikesFlightId implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "flight_id")
+    @JoinColumn
     private Flight flight;
 }

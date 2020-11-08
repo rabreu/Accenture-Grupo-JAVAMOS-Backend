@@ -1,8 +1,9 @@
-package com.accenture.javamos.converter;
+package com.accenture.javamos.converter.flight;
 
 import com.accenture.javamos.entity.Airline;
 import com.accenture.javamos.entity.Flight;
 import com.accenture.javamos.entity.FlightSegment;
+import com.amadeus.Response;
 import com.amadeus.resources.FlightOfferSearch;
 import com.amadeus.resources.FlightOfferSearch.Itinerary;
 import com.amadeus.resources.FlightOfferSearch.SearchSegment;
@@ -17,28 +18,36 @@ import lombok.AllArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
+/**
+ * Receive FlightOfferSearch[] from Amadeus and convert it to our domain List<Flight>
+ */
 @Component
 @AllArgsConstructor
-public class FlightOfferSearchConverter
+public class FlightOfferSearchArrayToFlightListConverter
   implements Converter<FlightOfferSearch[], List<Flight>> {
 
-  private final Converter<String, Airline> iataCodeConverter;
-  private final Converter<SearchSegment, FlightSegment> flightSegmentConverter;
-  private final Converter<String, Date> flightDateConverter;
+  private final Converter<String, Airline> toAirline;
+  private final Converter<SearchSegment, FlightSegment> toFlightSegment;
+  private final Converter<String, Date> toDate;
 
   @Override
   public List<Flight> convert(FlightOfferSearch[] flightOfferSearchs) {
     List<Flight> flights = new ArrayList<>();
 
-    JsonArray flightOfferSearchesJSON =
-      flightOfferSearchs[0].getResponse().getData().getAsJsonArray();
+    JsonArray flightOfferSearchesJSON = null;
+    Response response = flightOfferSearchs[0].getResponse();
     int idx = 0;
+    if (response != null) {
+      flightOfferSearchesJSON = response.getData().getAsJsonArray();
+    }
 
     for (FlightOfferSearch f : flightOfferSearchs) {
       // we are converting a FlightOfferSearch to a Flight
       Flight flight = new Flight();
-      JsonElement offer = flightOfferSearchesJSON.get(idx++);
-      flight.setOffer(offer.toString());
+      if (flightOfferSearchesJSON != null) {
+        JsonElement offer = flightOfferSearchesJSON.get(idx++);
+        flight.setOffer(offer.toString());
+      }
 
       // prepare some reusable variables
       Itinerary[] fItineraries = f.getItineraries();
@@ -48,15 +57,14 @@ public class FlightOfferSearchConverter
       SearchSegment lastSegment = fSegments[segmentsLength];
 
       // get airline name
-      Airline airline =
-        this.iataCodeConverter.convert(firstSegment.getCarrierCode());
+      Airline airline = this.toAirline.convert(firstSegment.getCarrierCode());
 
       // get segments and count total stops
       List<FlightSegment> segments = new ArrayList<>();
       int numberOfStops = 0;
 
       for (SearchSegment s : fSegments) {
-        FlightSegment segment = this.flightSegmentConverter.convert(s);
+        FlightSegment segment = this.toFlightSegment.convert(s);
         segment.setFlight(flight);
         segments.add(segment);
         numberOfStops += segment.getNumberOfStops();
@@ -68,13 +76,13 @@ public class FlightOfferSearchConverter
 
       // get duration by time diff (arrival minus departure)
       String departure = firstSegment.getDeparture().getAt();
-      Date departureDate = this.flightDateConverter.convert(departure);
+      Date departureDate = this.toDate.convert(departure);
       String arrival = lastSegment.getArrival().getAt();
-      Date arrivalDate = this.flightDateConverter.convert(arrival);
+      Date arrivalDate = this.toDate.convert(arrival);
       long millis = arrivalDate.getTime() - departureDate.getTime();
       int hours = (int) ((millis / (1000 * 60 * 60)));
       int mins = (int) ((millis / (1000 * 60)) % 60);
-      String duration = hours + "h" + mins + "min";
+      String duration = String.format("%02dh%02dmin", hours, mins);
 
       DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 

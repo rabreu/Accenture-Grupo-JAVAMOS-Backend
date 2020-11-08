@@ -1,17 +1,19 @@
-package com.accenture.javamos.converter;
+package com.accenture.javamos.converter.flight;
 
 import com.accenture.javamos.entity.Airline;
 import com.accenture.javamos.service.AirlineService;
-import java.util.Arrays;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
+/**
+ * Get Iata Code from Amadeus and convert it to our domain Airline
+ */
 @Component
-public class IataCodeConverter implements Converter<String, Airline> {
+@AllArgsConstructor
+public class IataCodeToAirlineConverter implements Converter<String, Airline> {
 
-  @Autowired
-  private AirlineService airlineService;
+  private final AirlineService airlineService;
 
   @Override
   public Airline convert(String iataCode) {

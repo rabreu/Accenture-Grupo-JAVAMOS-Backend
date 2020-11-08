@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import lombok.Getter;
 
 @Entity
-@Table(name = "User_likes_flight")
+@Table(name = "user_likes_flight")
 @Getter
 public class UserLikesFlight {
   @EmbeddedId
