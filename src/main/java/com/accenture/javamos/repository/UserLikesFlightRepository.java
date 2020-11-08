@@ -23,7 +23,7 @@ public interface UserLikesFlightRepository
 
   @Query(
           value = "SELECT * FROM USER_LIKES_FLIGHT " +
-                  "WHERE USERS_ID = :Id",
+                  "WHERE USER_ID = :Id",
           nativeQuery = true
   )
   List<UserLikesFlight> findByUserId(@Param("Id") Integer Id);

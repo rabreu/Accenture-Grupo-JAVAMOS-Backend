@@ -64,6 +64,10 @@ public class ApiExceptionHandler {
       status = HttpStatus.UNAUTHORIZED;
       errors.put("credentials", "Credenciais inválidas.");
       message = "Faça o login.";
+    } else if (e instanceof FlightNotFoundException) {
+      status = HttpStatus.NOT_FOUND;
+      errors.put("flight", ((FlightNotFoundException) e).getMessage());
+      message = "Verifique o id da passagem";
     } else {
       /** Internal Server Error */
       status = HttpStatus.INTERNAL_SERVER_ERROR;

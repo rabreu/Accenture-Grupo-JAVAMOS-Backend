@@ -48,11 +48,11 @@ public class UserController {
   public ResponseEntity<?> add(@RequestBody @Valid UserDTO user)
     throws EmailAlreadyTakenException {
     User added = userService.createNewUser(
-      userConverter.toEntity.convert(user)
+      userConverter.toEntity().convert(user)
     );
 
     return new ResponseEntity<UserDTO>(
-      userConverter.toDTO.convert(added),
+      userConverter.toDTO().convert(added),
       HttpStatus.CREATED
     );
   }
@@ -84,7 +84,7 @@ public class UserController {
   public ResponseEntity<UserDTO> authenticatedUser()
     throws UnauthorizedException {
     return ResponseEntity.ok(
-      userConverter.toDTO.convert(securityService.getUserAuthenticated())
+      userConverter.toDTO().convert(securityService.getUserAuthenticated())
     );
   }
 }
