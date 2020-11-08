@@ -14,7 +14,7 @@
 
 Somos uma equipe que está desenvolvendo um trabalho para o DESAFIO FINAL do treinamento da Accademia Accenture. O objetivo é aplicar os aprendizados absorvidos durante os dias que passamos aprimorando os conhecimentos da linguagem JAVA em um desafio real.
 O trabalho será entregue para uma banca técnica, formada por profissionais de tecnologia da
-Avanade, que avaliarão o código desenvolvido. Nossas competências
+Accenture, que avaliarão o código desenvolvido. Nossas competências
 técnicas e comportamentais serão alocadas nos projetos que tenha mais fit com o nosso respectivo
 perfil.
 
@@ -64,25 +64,25 @@ No dia 4, tivemos o conhecimento que a aplicação de front-end seria feito por 
 
 O feriadão de finados continuou sendo marcado por pesquisas com testes e mais testes para melhorar a API da melhor forma possível. Encontramos alguns BUGs no código e ao investigar, percebemos que foi causado pela inclusão do Lombok, que é uma biblioteca focada em produtividade com redução de código por meio de anotações. O problema foi corrigido manualmente ao identificar as linhas defeituosas. Ao revisar o projeto, encontramos outras inconscistências, como a possibilidade de se criar um usuário sem nome, sem senha e sem email. Isso foi rapidamente anotado para ser ajustado. Enfim, estávamos num estágio de refinamento e aplicar um código limpo, conforme é recomendado pelas boas práticas de Arquitetura de Software 👌.
 
-## 4 dias restantes para entrega 💻🏃
+## 4 dias restantes para a entrega 💻🏃
 
 A partir desse dia, começaram os treinamentos da Accenture, o que ocupou grande parte do tempo, sendo aulas ministradas no horário da manhã e tarde, e à noite a continuação da Accademia Accenture de Java. Assim, no pouco horário disponível, corrigimos os erros que econtramos anteriormente e continuamos a aplicar os testes pertinentes. 
 
-## 3 dias restante para entrega 💻🏃🏃
+## 3 dias restante para a entrega 💻🏃🏃
 
 Como o dia anterior, o dia todo foi marcado por treinamentos da Accenture, mostrando os primeiros passos com a empresa ✍️. Mesmo assim, continuamos a fazer nosso melhor e dividimos o tempo para conseguir fazer nossos deveres em paralelo, sem comprometer tanto nossas atividades e entregar os resultados no prazo. Na aula anterior da Accademia Accenture, o professor apresentou uma nova forma de consumir serviços, que até então, não tínhamos o conhecimento. Era o conceito de se utilizar API's externas diferente das que estávamos usando. O projeto [Feign](https://domineospring.wordpress.com/2017/06/02/feign-uma-forma-simples-para-consumir-servicos/) é um exemplo de mecanismo que automatiza a tarefa de consumir diversos serviços. Pra nossa equipe, isso foi muito bom, pois facilitou muito a integração com a plataforma [Pagar.me](https://pagar.me/). 
 
-## 2 dias restantes para entrega 💻🏃🏃🏃
+## 2 dias restantes para a entrega 💻🏃🏃🏃
 
 O grupo JAVAMOS continuou a se reunir na plataforma Discord para avaliarmos o progresso da aplicação. Então alinhamos algumas alterações para que pudéssemos documetar de forma a facilitar a documentação. Também discutimos se iríamos ter que subir os dados na plataforma Azure, mas caso algum problema surgisse nesse procedimento, faríamos um deploy na plataforma Heroku como um plano B. Também falamos sobre a forma que iríamos organizar a apresentação do desafio no dia final. Alguns bugs foram surgindo ao realizar os testes e pouco a pouco eles foram corrigidos, como o bug que permitia criar usuario sem a senha, assim foi passado validações para o controller de usuário. Foi um dia corrido, mas estávamos caminhando 🏃. 
 
-## 1 dia restante para entrega 💻🏃🏃🏃🏃
+## 1 dia restante para a entrega 💻🏃🏃🏃🏃
 
 Faltando 1 dia para a entrega desse projeto, a API JAVAMOS já estava nos retoques finais. A integração com o Pagar.me estava sendo desenvolvida e estávamos avaliando soluções com a plataforma da Microsoft Azure no serviço de DevOps. 
 
-## Dia de Entrega 🙌🙏
+## Dia da Entrega 🙌🙏
 
-(...)
+Depois de uma semana corrida, nosso grupo se reuniu no Discord para finalizar toda a arquitetura da API. O dia foi marcado por "commits" realizados para o GitHub. A integração com o [Pagar.me](https://pagar.me/) ainda estava sendo finalizada. Foi feito o deploy na plataforma Heroku e um cuidado observado foi a limitação com o banco de dados com o Heroku, já que há um grande número de dados requisitados, podendo não ser suportado por muito tempo com a conta gratuita. 
 
 ## Getting started
 
