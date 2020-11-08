@@ -18,7 +18,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "flight_segment")
+@Table
 public class FlightSegment {
 
   @Id

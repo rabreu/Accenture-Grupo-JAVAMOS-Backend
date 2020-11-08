@@ -21,7 +21,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "flight")
+@Table
 public class Flight {
 
   @Id
