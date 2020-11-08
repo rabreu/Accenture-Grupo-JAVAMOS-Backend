@@ -113,7 +113,11 @@
             <artifactId>modelmapper</artifactId>
             <version>2.3.8</version>
         </dependency>
-
+        <dependency>
+            <groupId>me.pagar</groupId>
+            <artifactId>pagarme-java</artifactId>
+            <version>1.5.9</version>
+        </dependency>
     </dependencies>
 
     <build>

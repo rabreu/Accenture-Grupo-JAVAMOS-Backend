@@ -6,6 +6,8 @@ import com.accenture.javamos.dto.TravelerDTO;
 import com.accenture.javamos.entity.Flight;
 import com.accenture.javamos.model.FlightOfferSearchRequest;
 import com.accenture.javamos.repository.FlightRepository;
+import com.accenture.javamos.repository.TicketRepository;
+import com.accenture.javamos.repository.UserRepository;
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.FlightOfferSearch;
 import com.amadeus.resources.FlightOrder;
@@ -24,6 +26,12 @@ public class FlightService {
 
   @Autowired
   FlightRepository flightRepository;
+
+  @Autowired
+  TicketRepository ticketRepository;
+
+  @Autowired
+  UserRepository userRepository;
 
   @Autowired
   private AmadeusService amadeusService;

@@ -1,8 +1,10 @@
 package com.accenture.javamos.controller;
 
+import com.accenture.javamos.controller.exception.PaymentAlreadyCompletedException;
 import com.accenture.javamos.controller.exception.UnauthorizedException;
 import com.accenture.javamos.converter.flight.FlightConverter;
 import com.accenture.javamos.dto.FlightOrderDTO;
+import com.accenture.javamos.dto.PaymentDTO;
 import com.accenture.javamos.dto.TicketDTO;
 import com.accenture.javamos.entity.Flight;
 import com.accenture.javamos.entity.Ticket;
@@ -10,10 +12,12 @@ import com.accenture.javamos.model.ErrorResponse;
 import com.accenture.javamos.model.FlightOfferSearchRequest;
 import com.accenture.javamos.model.FlightOfferSearchResponse;
 import com.accenture.javamos.service.FlightService;
+import com.accenture.javamos.service.PagarmeService;
 import com.accenture.javamos.service.TicketService;
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.FlightOrder;
 import java.util.List;
+import me.pagar.model.PagarMeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -31,6 +35,9 @@ public class FlightController {
 
   @Autowired
   FlightService flightService;
+
+  @Autowired
+  PagarmeService pagarmeService;
 
   @Autowired
   private FlightConverter flightConverter;
@@ -114,5 +121,23 @@ public class FlightController {
   @GetMapping(path = "/order", params = { "id" })
   public ResponseEntity<?> getFlightOrder(String id) {
     return new ResponseEntity<>(HttpStatus.METHOD_NOT_ALLOWED);
+  }
+
+  @PostMapping(
+    path = "/order/confirm",
+    consumes = MediaType.APPLICATION_JSON_VALUE,
+    produces = MediaType.APPLICATION_JSON_VALUE
+  )
+  @ResponseBody
+  public ResponseEntity<?> confirmTicket(@RequestBody PaymentDTO paymentDTO)
+    throws PagarMeException, PaymentAlreadyCompletedException, UnauthorizedException {
+    if (paymentDTO.getTicket().getStatus().equals("completed")) {
+      throw new PaymentAlreadyCompletedException("");
+    }
+
+    return new ResponseEntity<>(
+      pagarmeService.confirm(paymentDTO),
+      HttpStatus.BAD_REQUEST
+    );
   }
 }

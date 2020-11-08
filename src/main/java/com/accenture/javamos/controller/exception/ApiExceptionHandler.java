@@ -2,6 +2,7 @@ package com.accenture.javamos.controller.exception;
 
 import java.util.HashMap;
 import java.util.Map;
+import me.pagar.model.PagarMeException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -68,6 +69,14 @@ public class ApiExceptionHandler {
       status = HttpStatus.NOT_FOUND;
       errors.put("flight", ((FlightNotFoundException) e).getMessage());
       message = "Verifique o id da passagem";
+    } else if (e instanceof PagarMeException) {
+      status = HttpStatus.BAD_REQUEST;
+      errors.put("pagarme", e.getMessage());
+      message = e.getMessage();
+    } else if (e instanceof PaymentAlreadyCompletedException) {
+      status = HttpStatus.CONFLICT;
+      errors.put("payment", "Pagamento já foi feito para essa passagem");
+      message = "Você já pagou por essa passagem";
     } else {
       /** Internal Server Error */
       status = HttpStatus.INTERNAL_SERVER_ERROR;

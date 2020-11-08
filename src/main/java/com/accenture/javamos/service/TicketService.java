@@ -17,6 +17,12 @@ public class TicketService {
   @Autowired
   UserRepository userRepository;
 
+  /**
+   * Create an order to book a flight (this is a reservation)
+   * @param order
+   * @return A ticket with "pending" status: waiting for payment
+   * @throws UnauthorizedException
+   */
   public Ticket create(FlightOrder order) throws UnauthorizedException {
     User user = securityService.getUserAuthenticated();
     Ticket ticket = new Ticket(order.getId(), "pending", user);
@@ -25,6 +31,10 @@ public class TicketService {
 
     userRepository.save(user);
 
+    return ticket;
+  }
+
+  public Ticket confirm(Ticket ticket) {
     return ticket;
   }
 }
