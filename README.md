@@ -41,6 +41,7 @@ Quais ferramentas estamos usando?
 - **[REST-assured](https://rest-assured.io/)**
 - **[Postman](https://www.postman.com/)**
 - **[Pagar.me](https://pagar.me/)**
+- **[Heroku](https://accenture-grupo-javamos.herokuapp.com/)**
 
 ## Dia 1 🚀
 
