@@ -40,6 +40,7 @@ Quais ferramentas estamos usando?
 - **[Lombok](https://projectlombok.org/)**
 - **[REST-assured](https://rest-assured.io/)**
 - **[Postman](https://www.postman.com/)**
+- **[Pagar.me](https://pagar.me/)**
 
 ## Dia 1 🚀
 
